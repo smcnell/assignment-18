@@ -4,11 +4,36 @@
 
 body{
 	font-family: Helvetica, Arial, sans-serif;
+	background-image: url("../../iceland.png");
+	background-size: cover;
 }
 
-h1 {
-	font-size: 300px;
-	text-align: center;
-	color: chartreuse;
-	font-size: 12vw;
+.mine {
+	width: 100%;
+}
+.mine li {
+width: 25%;
+}
+
+.header {
+background-color:#302f2f;
+color: #fff;
+margin: 0;
+padding: 20px;
+text-align: center;
+}
+.basic-facts {
+	width: 828px;
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	border-left: 3px #302f2f solid;
+	border-right: 3px #302f2f solid;
+	text-align: left;
+}
+
+.basic-facts th {
+background-color:#f4dcdc;
+// width: 100%;
+font-size: 20px;
 }
