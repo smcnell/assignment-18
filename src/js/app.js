@@ -11,13 +11,16 @@ var appContainerEl= document.querySelector("#app-container")
 //
 function controllerRouter (){
   var currentRoute= window.location.hash
+  console.log(currentRoute)
 
-//
+  if (currentRoute==="#carpools"){
     $.getJSON('http://apis.is/concerts').then(function(serverRes){
       console.log(serverRes.results)
       var htmlTemplate= createPageTemplate(serverRes.results, "concerts")
       appContainerEl.innerHTML=htmlTemplate
     })
+    return
+  }
 
 
 
@@ -44,11 +47,12 @@ function createPageTemplate(dataArray, title){
     var name= concertObj.eventDateName
     var venue= concertObj.eventHallName
     var date= concertObj.dateOfShow
+    var img= concertObj.imageSource
     bigHTMLStr+= `
     <div class="row">
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-4 col-md-4">
         <div class="thumbnail">
-          <img src="..." alt="...">
+          <img src="${img}" alt="...">
           <div class="caption">
             <h3>${name}</h3>
             <p>${venue}</p>
