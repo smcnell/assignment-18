@@ -11,15 +11,14 @@ var appContainerEl= document.querySelector("#app-container")
 //
 function controllerRouter (){
   var currentRoute= window.location.hash
-console.log("HEY" window.location.hash)
+
 //
-  if (currentRoute==="#concerts"){
     $.getJSON('http://apis.is/concerts').then(function(serverRes){
+      console.log(serverRes.results)
       var htmlTemplate= createPageTemplate(serverRes.results, "concerts")
       appContainerEl.innerHTML=htmlTemplate
     })
-    return
-  }
+
 
 
   // if (currentRoute==="#carpools"){
@@ -42,7 +41,9 @@ function createPageTemplate(dataArray, title){
   var bigHTMLStr= ''
 
   forEach(dataArray, function(concertObj){
-    var name= concertObj.name
+    var name= concertObj.eventDateName
+    var venue= concertObj.eventHallName
+    var date= concertObj.dateOfShow
     bigHTMLStr+= `
     <div class="row">
       <div class="col-sm-6 col-md-4">
