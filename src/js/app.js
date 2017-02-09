@@ -58,23 +58,24 @@ function createPageTemplateConcerts(dataArray, title){
     var date= concertObj.dateOfShow
     var img= concertObj.imageSource
     bigHTMLStr+= `
-      <div class="row">
+
         <div class="col-sm-4 col-md-4">
-          <div class="thumbnail">
+          <div class="thumbnail mythumbnail">
             <img src="${img}" alt="...">
             <div class="caption">
               <h3>${name}</h3>
-              <p>${venue}</p>
+              <p> <mark>Venue:</mark> ${venue}</p>
               <p>${date}</p>
             </div>
           </div>
         </div>
+
 `
   })
 
 
   return `
-  <h1> Concerts </h1>
+  <h1><span> Concerts </span></h1>
   <div class= "concerts-container">
     ${bigHTMLStr}
     </div>
@@ -102,17 +103,17 @@ function createPageTemplateCarpools(dataArray, title){
 
   return `
   <div class= "carpool-container">
-  <h1> Carpools </h1>
-  <div class= "carpool-info">
-  <table class= "table carpool-table">
-    <tr>
-      <th> Time of Departure </th>
-      <th>From</th>
-      <th> To</th>
-    </tr>
-  ${bigCarpoolHTMLStr}
+    <h1> Carpools </h1>
+    <div class= "carpool-info">
+      <table class= "table carpool-table">
+      <tr>
+        <th> Time of Departure </th>
+        <th>From</th>
+        <th> To</th>
+        </tr>
+        ${bigCarpoolHTMLStr}
   		</table>
-  </div>
+      </div>
   </div>
   `
 
@@ -205,6 +206,22 @@ function createPageTemplateCarpools(dataArray, title){
 
         }
 }
+
+var tabsContainerEl= document.querySelector (".nav-tabs")
+tabsContainerEl.addEventListener('click', function(evt){
+	var clickedTabEl = evt.target
+	var tab = clickedTabEl.dataset.tab
+
+	var activeTabEl = document.querySelector('.nav-tabs .active')
+	activeTabEl.classList.remove('active')
+
+	clickedTabEl.classList.add('active')
+
+var linkEl= document.querySelector(".information-giant a")
+	if( tab === 'concerts'){linkEl= "<a href='file:///Users/shannonmcnellis/TIY/assignments/assignment-18/index.html#concerts'></a>"}
+	if( tab === 'carpools'){linkEl= "<a href='file:///Users/shannonmcnellis/TIY/assignments/assignment-18/index.html#carpools'></a>"}
+	if( tab === 'flights'){linkEl= "<a href='file:///Users/shannonmcnellis/TIY/assignments/assignment-18/index.html#flights'></a>"}
+  })
 
 
 window.addEventListener('hashchange', controllerRouter() )
