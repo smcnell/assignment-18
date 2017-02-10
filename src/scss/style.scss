@@ -7,9 +7,9 @@ body{
 	background: url("../../iceland.png") no-repeat center center fixed;
 
 }
-.nav-tabs > li.active > a,
-			 .nav-tabs > li.active > a:hover,
-			 .nav-tabs > li.active > a:focus{
+.nav-tabs > .mine.active > a,
+			 .nav-tabs > .mine.active > a:hover,
+			 .nav-tabs > .mine.active > a:focus{
 					 color: #fff;
 					 background-color: #2c7ca0;
 			 }

@@ -202,25 +202,42 @@ function createPageTemplateCarpools(dataArray, title){
 
       informationEl.innerHTML = bigHTMLStringFlight
       return
+      // console.log("HEY")
 
 
         }
 }
 
-var tabsContainerEl= document.querySelector (".nav-tabs")
+
+//ACTIVE OR NOT ACTIVE//
+var tabsContainerEl= document.querySelector (".mine")
 tabsContainerEl.addEventListener('click', function(evt){
 	var clickedTabEl = evt.target
-	var tab = clickedTabEl.dataset.tab
+  console.log(clickedTabEl)
+	var tab = clickedTabEl.innerHTML
+  console.log(tab)
 
-	var activeTabEl = document.querySelector('.nav-tabs .active')
+	var activeTabEl = document.querySelector('.mine .active')
+  console.log (activeTabEl.className)
 	activeTabEl.classList.remove('active')
 
 	clickedTabEl.classList.add('active')
 
-var linkEl= document.querySelector(".information-giant a")
-	if( tab === 'concerts'){linkEl= "<a href='file:///Users/shannonmcnellis/TIY/assignments/assignment-18/index.html#concerts'></a>"}
-	if( tab === 'carpools'){linkEl= "<a href='file:///Users/shannonmcnellis/TIY/assignments/assignment-18/index.html#carpools'></a>"}
-	if( tab === 'flights'){linkEl= "<a href='file:///Users/shannonmcnellis/TIY/assignments/assignment-18/index.html#flights'></a>"}
+
+//CHANGE ROUTE BASED ON TABS//
+  forEach(tabsContainerEl, function(eachButton){
+    eachButton.addEventListener('click', function(evt){
+  	var clickedTabEl = evt.target
+  	var route = clickedTabEl.dataset.route
+  	window.location.hash = route
+})
+  })
+
+
+  if (tab==='Home'){console.log("HOME BOIII")}
+	if( tab === 'Concerts'){console.log("CONCERT BOIII")}
+	if( tab === 'Carpools'){console.log("CARPOOLS BOIII")}
+	if( tab === 'Flights'){console.log("FLIGHTS BOIII")}
   })
 
 
