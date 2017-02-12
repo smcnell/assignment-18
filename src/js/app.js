@@ -10,8 +10,38 @@ var informationEl= document.querySelector(".information-giant")
 
 //
 function controllerRouter (){
+  alert("CHANGE")
   var currentRoute= window.location.hash
   console.log(currentRoute)
+
+  if(currentRoute==="#home"){
+    informationEl.innerHTML=`<div class="home-container">
+		<table class= "basic-facts table">
+			<tr>
+				<th> The Basic Facts </th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>Native Name</td>
+				<td>Island</td>
+			</tr>
+			<tr>
+				<td>Demonym</td>
+				<td>Icelander</td>
+			</tr>
+			<tr>
+				<td>Area(m2)</td>
+				<td>103000</td>
+			</tr>
+			<tr>
+				<td>Calling Code</td>
+				<td>352</td>
+			</tr>
+		</table>
+		</div>
+	</div>`
+
+  }
 
   if (currentRoute==="#concerts"){
     $.getJSON('http://apis.is/concerts').then(function(serverRes){
@@ -48,6 +78,8 @@ function controllerRouter (){
     })
     // return
   }
+
+
 
 function createPageTemplateConcerts(dataArray, title){
   var bigHTMLStr= ''
@@ -206,6 +238,12 @@ function createPageTemplateCarpools(dataArray, title){
 
 
         }
+  console.log(currentRoute)
+
+
+
+
+
 }
 
 
@@ -213,9 +251,10 @@ function createPageTemplateCarpools(dataArray, title){
 var tabsContainerEl= document.querySelector (".mine")
 tabsContainerEl.addEventListener('click', function(evt){
 	var clickedTabEl = evt.target
-  console.log(clickedTabEl)
+  console.log(clickedTabEl.innerHTML)
 	var tab = clickedTabEl.innerHTML
   console.log(tab)
+
 
 	var activeTabEl = document.querySelector('.mine .active')
   console.log (activeTabEl.className)
@@ -223,23 +262,40 @@ tabsContainerEl.addEventListener('click', function(evt){
 
 	clickedTabEl.classList.add('active')
 
+// **********************
+console.log(clickedTabEl.parentElement)
+var liTag= clickedTabEl.parentElement
+console.log(liTag.dataset.route)
+var nameOfRoute= liTag.dataset.route
+
+
+console.log(nameOfRoute)
+console.log(window.location.hash)
+window.location.hash=nameOfRoute
+console.log(window.location.hash)
+
+
+
+
+
 
 //CHANGE ROUTE BASED ON TABS//
-  forEach(tabsContainerEl, function(eachButton){
-    eachButton.addEventListener('click', function(evt){
-  	var clickedTabEl = evt.target
-  	var route = clickedTabEl.dataset.route
-  	window.location.hash = route
-})
+//   forEach(tabsContainerEl, function(eachButton){
+//     eachButton.addEventListener('click', function(evt){
+//
+//   	var clickedTabEl = evt.target
+//   	var route = clickedTabEl.dataset.route
+//   	window.location.hash = route
+// })
+  // })
+
+
+  // if (tab==='Home'){console.log("HOME BOIII")}
+	// if( tab === 'Concerts'){console.log("CONCERT BOIII")}
+	// if( tab === 'Carpools'){console.log("CARPOOLS BOIII")}
+	// if( tab === 'Flights'){console.log("FLIGHTS BOIII")}
   })
 
 
-  if (tab==='Home'){console.log("HOME BOIII")}
-	if( tab === 'Concerts'){console.log("CONCERT BOIII")}
-	if( tab === 'Carpools'){console.log("CARPOOLS BOIII")}
-	if( tab === 'Flights'){console.log("FLIGHTS BOIII")}
-  })
-
-
-window.addEventListener('hashchange', controllerRouter() )
+window.addEventListener('hashchange', controllerRouter )
 // controllerRouter()
